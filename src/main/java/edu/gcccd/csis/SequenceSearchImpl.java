@@ -25,7 +25,7 @@ public class SequenceSearchImpl extends SequenceSearch {
 						{
 							int endString = j;
 							sa = adds(sa, tmpContent.substring(startString, endString));
-							tmpContent = tmpContent.substring(endString+1, tmpContent.length());
+							tmpContent = tmpContent.substring(endString+2, tmpContent.length());
 							found = true;
 							break;
 						}
