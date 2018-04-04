@@ -21,14 +21,14 @@ public class SequenceSearchImpl extends SequenceSearch {
                     int nextStart = tmpContent.indexOf(startTag, startString + 1);
                     if(nextStart == j && !startTag.equals(endTag))
                     {
-                        tmpContent = tmpContent.substring(j + startTag.length(), tmpContent.length());
+                        tmpContent = tmpContent.substring(j + startTag.length());
                         i = 0;
                         break;
                     }
                     else if (endString == j)
                     {
                         sa = adds(sa, tmpContent.substring(startString, j));
-                        tmpContent = tmpContent.substring(j + endTag.length(), tmpContent.length());
+                        tmpContent = tmpContent.substring(j + endTag.length());
                         i = 0;
                         break;
                     }
