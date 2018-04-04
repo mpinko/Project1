@@ -6,16 +6,27 @@ public class SequenceSearchImpl extends SequenceSearch {
         super(content, start, end);
     }
 
-    @Override
     public String[] getAllTaggedSequences()
     {
         String[] sa = {};
         String tmpContent = content;
-        for (int i = 0; i < tmpContent.length(); i++) {
-            if (tmpContent.indexOf(startTag) == i) {
+        for (int i = 0; i < tmpContent.length(); i++)
+        {
+            if (tmpContent.indexOf(startTag) == i)
+            {
                 int startString = i + startTag.length();
-                for (int j = startString + 1 ; j < tmpContent.length(); j++) {
-                    if (tmpContent.indexOf(endTag, startString + 1) == j) {
+                for (int j = startString + 1 ; j < tmpContent.length(); j++)
+                {
+                    int endString = tmpContent.indexOf(endTag, startString + 1);
+                    int nextStart = tmpContent.indexOf(startTag, startString + 1);
+                    if(nextStart == j && !startTag.equals(endTag))
+                    {
+                        tmpContent = tmpContent.substring(j + startTag.length(), tmpContent.length());
+                        i = 0;
+                        break;
+                    }
+                    else if (endString == j)
+                    {
                         sa = adds(sa, tmpContent.substring(startString, j));
                         tmpContent = tmpContent.substring(j + endTag.length(), tmpContent.length());
                         i = 0;
